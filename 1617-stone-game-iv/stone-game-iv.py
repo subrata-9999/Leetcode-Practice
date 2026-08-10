@@ -1,23 +1,19 @@
 class Solution:
     def winnerSquareGame(self, n: int) -> bool:
-
-        memo = {}
-        def solve(n:int) -> bool:
-            if n ==1:
-                return True
-            if n in memo:
-                return memo[n]
-            
-            i=1
-            while i*i<=n:
-                if solve(n-i*i) == False:
-                    memo[n] = True
+        dp = {}
+        def solve(n: int) -> bool:
+            if n < 0:
+                return False
+            if n in dp:
+                return dp[n]
+            i = 1
+            while i**2 <= n:
+                if solve(n-i**2)==False:
+                    dp[n] = True
                     return True
                 i+=1
-            memo[n] = False
+            dp[n] = False
             return False
-            
-        ans = solve(n)
-        return ans
+        return solve(n)
 
         
