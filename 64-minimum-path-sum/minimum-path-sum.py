@@ -7,16 +7,17 @@ class Solution:
         def solve(m1: int, n1: int)->int:
             if (m1,n1) in dp:
                 return dp[(m1,n1)]
+            current = grid[m1][n1]
 
             if m1==m-1 and n1==n-1:
-                return grid[m1][n1]
+                return current
             
             if m1==m-1 and n1!=n-1:
-                dp[(m1,n1)] = grid[m1][n1] + solve(m1, n1+1)
+                dp[(m1,n1)] = current + solve(m1, n1+1)
             elif m1!=m-1 and n1==n-1:
-                dp[(m1,n1)] = grid[m1][n1] + solve(m1+1, n1)
+                dp[(m1,n1)] = current + solve(m1+1, n1)
             else:
-                dp[(m1,n1)] = grid[m1][n1] + min(
+                dp[(m1,n1)] = current + min(
                                                     solve(m1 + 1, n1),
                                                     solve(m1, n1 + 1)
                                                 )
