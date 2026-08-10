@@ -16,7 +16,10 @@ class Solution:
             elif m1!=m-1 and n1==n-1:
                 dp[(m1,n1)] = grid[m1][n1] + solve(m1+1, n1)
             else:
-                dp[(m1,n1)] = min(grid[m1][n1] + solve(m1+1, n1), grid[m1][n1] + solve(m1, n1+1))
+                dp[(m1,n1)] = grid[m1][n1] + min(
+                                                    solve(m1 + 1, n1),
+                                                    solve(m1, n1 + 1)
+                                                )
             return dp[(m1,n1)]
 
 
