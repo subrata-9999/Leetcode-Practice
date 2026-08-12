@@ -8,7 +8,6 @@ class Solution:
                 dp[nums[j]] +=1
             else:
                 dp[nums[j]] = 1
-            
             while dp[nums[j]]>k:
                 dp[nums[i]] -=1
                 i+=1
